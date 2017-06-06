@@ -115,9 +115,16 @@
     <ClInclude Include="pair.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="assignment08.cpp" />
     <ClCompile Include="huffman.cpp" />
     <ClCompile Include="week08.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="huffman1.txt" />
+    <Text Include="huffman2.txt" />
+    <Text Include="huffman3.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

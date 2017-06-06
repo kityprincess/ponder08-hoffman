@@ -9,12 +9,14 @@
  ************************************************************************/
 
 #include "huffman.h"       // for HUFFMAN() prototype
+#include <string>
+using namespace std;
 
 /*******************************************
  * HUFFMAN
  * Driver program to exercise the huffman generation code
  *******************************************/
-void huffman()
+void huffman(string fileName)
 {
    return;
 }

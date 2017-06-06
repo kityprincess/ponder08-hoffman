@@ -26,14 +26,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="assignment08.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="huffman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="week08.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="huffman1.txt" />
+    <Text Include="huffman2.txt" />
+    <Text Include="huffman3.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
 </Project>
