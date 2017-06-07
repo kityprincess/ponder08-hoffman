@@ -28,7 +28,7 @@ public:
    void display(std::ostream & out); // iterate over the list of pairs in correct order using the bNodes
 private:
    List<Pair<std::string, double> > pairs;
-   List<BinaryNode<double> > bNodes;
+   List<BinaryNode<double> * > bNodes;
    void getPairs(); // read from file
    void buildTree(); // final bNodes tree
 };
