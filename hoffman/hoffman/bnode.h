@@ -7,7 +7,7 @@ using namespace std;
 /***********************************************************************
  * BNODE CLASS                                                                  * Class to move throughout a tree
 ***********************************************************************/
-template <class	T>
+template <class T>
 class BinaryNode
 {
 public:

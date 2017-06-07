@@ -112,6 +112,9 @@
   <ItemGroup>
     <ClInclude Include="bnode.h" />
     <ClInclude Include="huffman.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="listIterator.h" />
+    <ClInclude Include="node.h" />
     <ClInclude Include="pair.h" />
   </ItemGroup>
   <ItemGroup>
