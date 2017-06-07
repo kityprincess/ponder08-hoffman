@@ -25,6 +25,6 @@ a.out: week08.o huffman.o
 week08.o: bnode.h huffman.h week08.cpp
 	g++ -c week08.cpp -g
 
-huffman.o: bnode.h huffman.h huffman.cpp
-	g++ -c huffman.cpp -g
+huffman.o: bnode.h huffman.h huffman.cpp bryanAndMatt.cpp
+	g++ -c huffman.cpp bryanAndMatt.cpp -g
 
