@@ -41,6 +41,9 @@
     <ClCompile Include="week08.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bryanAndMatt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="huffman1.txt" />

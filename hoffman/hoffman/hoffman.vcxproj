@@ -118,6 +118,7 @@
     <ClInclude Include="pair.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bryanAndMatt.cpp" />
     <ClCompile Include="huffman.cpp" />
     <ClCompile Include="week08.cpp" />
   </ItemGroup>
