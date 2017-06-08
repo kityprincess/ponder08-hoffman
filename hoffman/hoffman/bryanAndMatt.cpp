@@ -3,30 +3,82 @@
 
 #include "huffman.h"
 #include "list.h"
+//#include <cfloat>
 
-/*
-typedef BinaryNode<double> BNode;
-typedef BNode* BNodePtr;
+typedef Pair<string, double> Element;
+typedef BinaryNode<Element> BNode;
+typedef BNode * BNodePtr;
 typedef List<BNodePtr> BNodeList;
-typedef Pair<string, double> CodePair;
-typedef List<CodePair> CodePairList;
+typedef ListIterator<BNodePtr> BNodeListIter;
+typedef List<Element> ElemList;
+typedef ListIterator<Element> ElemListIter;
 
-
-BNodeList buildBNodeListFromPairsList(const CodePairList & in_list)
+double getValueFromBNodePtr(const BNodePtr in_ptr)
 {
-   BNodeList newList;
-   return newList;
+   return in_ptr->data.getSecond();
 }
 
-void getMinimums(const BNodeList & in_list, ListIterator<BNodePtr> & out_minFirst, ListIterator<BNodePtr> & out_minSecond)
+BNodeList buildTree(ElemList in_list)
 {
+   BNodeList list;
 
+   // Populate the initial list
+   for (ElemListIter it = in_list.begin();
+      it != in_list.end(); ++it)
+      list.push_back(new BNode(*it));
+
+   // And now we loop until our list is left
+   // with one node: the root of our Huffman Code tree
+   while (list.size() > 1)
+   {
+      // First, we need to find the two minimum values
+      // in the list as it stands
+      BNodeListIter firstMin = list.end();
+      BNodeListIter secondMin = list.end();
+      
+      for (BNodeListIter it = list.begin();
+         it != list.end(); ++it)
+      {
+         if (firstMin == list.end() ||
+            getValueFromBNodePtr(*it) < getValueFromBNodePtr(*firstMin))
+         {
+            secondMin = firstMin;
+            firstMin = it;
+         }
+         else if (secondMin == list.end() ||
+            getValueFromBNodePtr(*it) < getValueFromBNodePtr(*secondMin))
+         {
+            secondMin = it;
+         }
+      }
+
+      // Now that we have those, we create a new node that will be their parent
+      BNodePtr parent =
+         new BNode(
+            Element("", getValueFromBNodePtr(*firstMin) + getValueFromBNodePtr(*secondMin))
+         );
+      parent->addLeft(*firstMin);
+      parent->addRight(*secondMin);
+
+      // Then we replace the first minimum node in the list with this new parent
+      list.insert(firstMin, parent);
+      list.remove(firstMin);
+
+      // And we replace the second node with the last item in the list
+      BNodePtr last = *(--list.end());
+      list.remove(--list.end());
+      list.insert(secondMin, last);
+      list.remove(secondMin);
+   }
+
+   // And that should be it
+   return list;
 }
-*/
 
 /*******************************************
 * HUFFMAN :: BUILDTREE
-* Driver program to exercise the huffman generation code
+* Given a list, converts it into a BinaryTree for
+* generating Huffman codes
 *******************************************/
 void HuffmanCode::buildTree()
 {
