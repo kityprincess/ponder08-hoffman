@@ -20,7 +20,7 @@
 #include <string>      // for STRING
 #include <cassert>     // for ASSERT
 #include "bnode.h"     // your BinaryNode class should be in bnode.h
-#include "huffman.h"   // for huffman()
+#include "huffmanCode.h"   // for huffman()
 using namespace std;
 
 

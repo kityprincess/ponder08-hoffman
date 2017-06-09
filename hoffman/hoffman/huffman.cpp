@@ -1,101 +1,56 @@
-/***********************************************************************
- * Module:
- *    Week 08, Huffman
- *    Brother Helfrich, CS 235
- * Author:
- *    <your name>
- * Summary:
- *    This program will implement the huffman() function
- ************************************************************************/
-
-#include "huffman.h"       // for HUFFMAN() prototype
-#include "pair.h"
-
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <fstream>
-
-using namespace std;
+#include "huffman.h"
 
 /*******************************************
- * GET PAIRS
- * read the paired data from a file and add
- * to a list
- *******************************************/
-void HuffmanCode :: getPairs(string filename)
+* HUFFMAN:: ADD
+* Adds a Huffman node onto this one, this
+* results in creating a new parent node
+*******************************************/
+void Huffman::add(Huffman * rhs)
 {
-   // declare stream variable
-   ifstream fin(filename);
-
-   // check for read error
-   if (fin.fail())
+   // Create the new parent with no value and a frequency that is the sum
+   // of the two nodes' frequencies
+   BinaryNode<Pair<string, double> > * parent = new BinaryNode<Pair<string, double> >();
+   parent->data = Pair<string, double>("", getFrequency() + rhs->getFrequency());
+   
+   // If the right-hand node has a lower frequency than the left,
+   // we need to push it over to become the left child of the new parent
+   if (rhs->getFrequency() < getFrequency())
    {
-      cout << "Unable to open file " << filename << endl;
-      fin.close();
+      parent->pLeft = rhs->tree;
+      parent->pRight = this->tree;
+   }
+   else // otherwise, we leave the nodes in their original order
+   {
+      parent->pLeft = this->tree;
+      parent->pRight = rhs->tree;
+   }
+
+   // And now our tree will point to this new parent
+   this->tree = parent;
+}
+
+/*******************************************
+* HUFFMAN:: DISPLAY
+* Displays the Huffman code to the console
+*******************************************/
+void Huffman::display(std::ostream & out) const
+{
+   display(out, tree, "");
+}
+
+/*******************************************
+* HUFFMAN:: DISPLAY
+* Recursively displays the Huffman code, building
+* the codes for the individual nodes as it goes along
+*******************************************/
+void Huffman::display(std::ostream & out, const BinaryNode<Pair<std::string, double>> * tree, string path) const
+{
+   if (tree == NULL)
       return;
-   }
 
-   // read in data
-   string line;
-   while (getline(fin, line))
-   {
-      try
-      {
-         // load the line into a stringstream
-         stringstream ss;
-         ss.str(line);
+   if ("" != tree->data.first)
+      out << path << "\t" << tree->data.first << endl;
 
-         // declare variables
-         string token;
-         double frequency;
-
-         // read in the data
-         ss >> token >> frequency;
-
-         // create a pair
-         Pair<string, double> pair = Pair<string, double>(token, frequency);
-         pairs.push_back(pair);
-      }
-
-      // catch any errors
-      catch (string message)
-      {
-         cout << message << endl;
-      }
-   }
-   fin.close();
-
-   return;
-}
-
-/*******************************************
- * LOAD
- * load the data, translate into a list of pairs,
- * and merge pairs into tree
- *******************************************/
-void HuffmanCode :: load(string filename)
-{
-   getPairs(filename);
-   return;
-}
-
-/*******************************************
- * DISPLAY
- * display the huffman codes
- *******************************************/
-void HuffmanCode :: display(ostream & out)
-{
-   return;
-}
-
-/*******************************************
- * HUFFMAN
- * Driver program to exercise the huffman generation code
- *******************************************/
-void huffman(std::string filename)
-{
-   HuffmanCode hc;
-   hc.load(filename);
-   return;
+   display(out, tree->pLeft, path + "0");
+   display(out, tree->pRight, path + "1");
 }

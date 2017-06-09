@@ -112,20 +112,27 @@
   <ItemGroup>
     <ClInclude Include="bnode.h" />
     <ClInclude Include="huffman.h" />
+    <ClInclude Include="huffmanCode.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="listIterator.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="pair.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bryanAndMatt.cpp" />
     <ClCompile Include="huffman.cpp" />
+    <ClCompile Include="huffmanCode.cpp" />
     <ClCompile Include="week08.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="huffman1.txt" />
-    <Text Include="huffman2.txt" />
-    <Text Include="huffman3.txt" />
+    <Text Include="huffman1.txt">
+      <DeploymentContent>true</DeploymentContent>
+    </Text>
+    <Text Include="huffman2.txt">
+      <DeploymentContent>true</DeploymentContent>
+    </Text>
+    <Text Include="huffman3.txt">
+      <DeploymentContent>true</DeploymentContent>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
