@@ -26,7 +26,7 @@ using namespace std;
 void HuffmanCode :: getPairs(string filename)
 {
    // declare stream variable
-   ifstream fin(filename);
+   ifstream fin(filename.c_str());
 
    // check for read error
    if (fin.fail())

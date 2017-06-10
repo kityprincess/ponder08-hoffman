@@ -27,7 +27,8 @@ public:
    ~HuffmanCode()
    {
       // we need to clear the code to avoid memory leaks
-      code.clear();   }
+      code.clear();
+   }
 
    void load(std::string filename); // translate into a list of pairs, merge pairs into tree (private functions)
    void display(); // iterate over the list of pairs in correct order using the bNodes
