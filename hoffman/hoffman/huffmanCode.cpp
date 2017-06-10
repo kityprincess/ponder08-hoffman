@@ -118,6 +118,12 @@ Huffman HuffmanCode::buildTree(const List<Pair<std::string, double> > & in_list)
       // node in the prior left node's slot. Per the instructions, we
       // then move the last node in our array to occupy the old right-hand
       // node's slot
+      if (idxMinRight < idxMinLeft)
+      {
+         int temp = idxMinRight;
+         idxMinRight = idxMinLeft;
+         idxMinLeft = temp;
+      }
       nodes[idxMinLeft].add(&(nodes[idxMinRight]));
       nodes[idxMinRight] = nodes[count - 1];
 

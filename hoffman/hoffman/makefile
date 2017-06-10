@@ -1,13 +1,16 @@
 ###############################################################
 # Program:
 #     Week 08, Binary Tree
-#     Brother XXXXX, CS235
+#     Brother JonesL, CS235
 # Author:
-#     <your name here>
+#     Bryan Lopez - 8 hours
+#	  Matthew Burr - 8 hours
+#	  Kimberly Stowe - 5 hours
+#	  Shayla Nelson - 4 hours
 # Summary:
-#     <put a description here>
-# Time:
-#     <how long did it take to complete this program>?
+#     Put binary nodes into a binary tree and print. 
+#	  The hardest part was getting the binary tree to work
+#	  with Huffman algorithm. 
 ###############################################################
 
 ##############################################################
