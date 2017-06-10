@@ -125,7 +125,7 @@ Huffman HuffmanCode::buildTree(const List<Pair<std::string, double> > & in_list)
       // old left node
       count--;
    }
-   
+
    // In the end, we want to delete our array to avoid a memory leak
    Huffman result = nodes[0];
    delete[] nodes;
@@ -153,7 +153,7 @@ void HuffmanCode :: display()
    // have a code, we clear it
    code.clear();
    code = buildTree(this->pairs);
-   code.display(cout);
+   code.display(this->pairs, cout);
 }
 
 /*******************************************

@@ -43,9 +43,9 @@ public:
    void add(Huffman * rhs);
 
    // Displays the Huffman tree to an ostream
-   void display(std::ostream & out) const;
+   void display(const List<Pair<std::string, double> > & in_list, std::ostream & out) const;
 
-   // Destroys the binary tree inside the Huffman 
+   // Destroys the binary tree inside the Huffman
    // class to avoid memory leaks
    void clear()
    {
@@ -55,9 +55,9 @@ public:
 private:
    // The tree holding all the binary nodes making up the Huffman Code tree
    BinaryNode< Pair < std::string, double > > * tree;
-   
+
    // Used to display the nodes of the tree with their individual codes prepended
-   void display(std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const;
+   void display(const List<Pair<std::string, double> > & in_list, std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const;
 
    void buildBitStrings(const BinaryNode<Pair<std::string, double> > * tree, List <Pair<string, string> > & bitString, string path) const;
 

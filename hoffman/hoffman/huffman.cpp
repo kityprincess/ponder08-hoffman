@@ -11,7 +11,7 @@ void Huffman::add(Huffman * rhs)
    // of the two nodes' frequencies
    BinaryNode<Pair<string, double> > * parent = new BinaryNode<Pair<string, double> >();
    parent->data = Pair<string, double>("", getFrequency() + rhs->getFrequency());
-   
+
    // If the right-hand node has a lower frequency than the left,
    // we need to push it over to become the left child of the new parent
    if (rhs->getFrequency() < getFrequency())
@@ -33,22 +33,27 @@ void Huffman::add(Huffman * rhs)
 * HUFFMAN:: DISPLAY
 * Displays the Huffman code to the console
 *******************************************/
-void Huffman::display(std::ostream & out) const
+void Huffman::display(const List<Pair<std::string, double> > & in_list, std::ostream & out) const
 {
-   display(out, tree, "");
+   display(in_list, out, tree, "");
 }
 
 /*******************************************
 * HUFFMAN:: DISPLAY
 * Recursively displays the Huffman code
 *******************************************/
-void Huffman::display(std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const
+void Huffman::display(const List<Pair<std::string, double> > & in_list, std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const
 {
-   List <Pair<string, string> > bitString = List <Pair<string, string> >();
-   buildBitStrings(tree, bitString,"");
-   for (ListIterator<Pair<string, string> > it = bitString.begin();
-      it != bitString.end(); ++it)
-      out << (*it).second << " = " << (*it).first << endl;
+   List <Pair<string, string> > bitString;
+   buildBitStrings(tree, bitString, "");
+   for (ListIterator<Pair<string, double> > lit = in_list.begin(); lit != in_list.end(); ++lit)
+   {
+      for (ListIterator<Pair<string, string> > it = bitString.begin(); it != bitString.end(); ++it)
+      {
+         if ((*lit).first == (*it).second)
+            out << (*it).second << " = " << (*it).first << endl;
+      }
+   }
 }
 
 /*******************************************
