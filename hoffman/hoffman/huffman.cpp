@@ -40,17 +40,32 @@ void Huffman::display(std::ostream & out) const
 
 /*******************************************
 * HUFFMAN:: DISPLAY
-* Recursively displays the Huffman code, building
-* the codes for the individual nodes as it goes along
+* Recursively displays the Huffman code
 *******************************************/
-void Huffman::display(std::ostream & out, const BinaryNode<Pair<std::string, double>> * tree, string path) const
+void Huffman::display(std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const
+{
+   List <Pair<string, string> > bitString = List <Pair<string, string> >();
+   buildBitStrings(tree, bitString,"");
+   for (ListIterator<Pair<string, string> > it = bitString.begin();
+      it != bitString.end(); ++it)
+      out << (*it).second << " = " << (*it).first << endl;
+}
+
+/*******************************************
+* HUFFMAN:: BUILDBITSTRINGS
+* Builds the codes for the individual nodes
+*******************************************/
+void Huffman::buildBitStrings(const BinaryNode<Pair<std::string, double> > * tree, List <Pair<string, string> > & bitString, string path) const
 {
    if (tree == NULL)
       return;
 
    if ("" != tree->data.first)
-      out << path << "\t" << tree->data.first << endl;
+   {
+      Pair<string, string> pair = Pair<string, string>(path, tree->data.first);
+      bitString.push_back(pair);
+   }
 
-   display(out, tree->pLeft, path + "0");
-   display(out, tree->pRight, path + "1");
+   buildBitStrings(tree->pLeft, bitString, path + "0");
+   buildBitStrings(tree->pRight, bitString, path + "1");
 }

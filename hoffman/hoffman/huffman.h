@@ -3,6 +3,7 @@
 
 #include "bnode.h"
 #include "pair.h"
+#include "list.h"
 #include <string>
 #include <iostream>
 
@@ -22,7 +23,7 @@ public:
 
    Huffman(Pair<std::string, double> item)
    {
-      tree = new BinaryNode<Pair <std::string, double >>(item);
+      tree = new BinaryNode<Pair <std::string, double > >(item);
    }
 
    // Gets the frequency of this Huffman node
@@ -56,6 +57,10 @@ private:
    BinaryNode< Pair < std::string, double > > * tree;
    
    // Used to display the nodes of the tree with their individual codes prepended
-   void display(std::ostream & out, const BinaryNode<Pair<std::string, double>> * tree, string path) const;
+   void display(std::ostream & out, const BinaryNode<Pair<std::string, double> > * tree, string path) const;
+
+   void buildBitStrings(const BinaryNode<Pair<std::string, double> > * tree, List <Pair<string, string> > & bitString, string path) const;
+
+   List <Pair<string, string> > bitString;
 };
 #endif

@@ -13,8 +13,8 @@
 ##############################################################
 # The main rule
 ##############################################################
-a.out: week08.o huffman.o 
-	g++ -o a.out week08.o huffman.o -g
+a.out: week08.o huffmanCode.o 
+	g++ -o a.out week08.o huffmanCode.o huffman.o -g
 	tar -cf week08.tar *.h *.cpp makefile
 
 ##############################################################
@@ -22,9 +22,12 @@ a.out: week08.o huffman.o
 #      week08.o     : the driver program
 #      huffman.o      : the logic for the huffman code program
 ##############################################################
-week08.o: bnode.h huffman.h week08.cpp
+week08.o: bnode.h huffmanCode.h huffman.h week08.cpp
 	g++ -c week08.cpp -g
 
 huffman.o: bnode.h huffman.h huffman.cpp
 	g++ -c huffman.cpp -g
+	
+huffmanCode.o: bnode.h huffmanCode.h huffman.h huffmanCode.cpp
+	g++ -c huffmanCode.cpp -g
 
